@@ -1,10 +1,30 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'kotlin-android-extensions'
+
+buildscript {
+    ext.kotlin_version = '1.6.10'
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.3.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
 android {
-    compileSdkVersion 28
+
+    compileSdkVersion 34
 
 
+    viewBinding {
+        enabled = true
+    }
+    dataBinding {
+        enabled = true
+    }
 
     defaultConfig {
         applicationId "com.example.christmas"
@@ -23,6 +43,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    namespace 'com.example.christmas'
 
 }
 
